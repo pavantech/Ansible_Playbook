@@ -1,0 +1,31 @@
+---
+- name: install wget
+  yum:  
+    name: wget
+    state: latest
+
+- name: install git 
+  yum: 
+    name: git 
+    state: latest 
+
+
+- name: docker-ce repo
+  shell: wget https://download.docker.com/linux/centos/docker-ce.repo -O /etc/yum.repos.d/docker-ce.repo
+
+- name: install container rpm
+  shell: rpm -ivf http://mirror.centos.org/centos/7/extras/x86_64/Packages/container-selinux-2.10-2.el7.noarch.rpm
+
+- name: install docker ce
+  yum:
+   name: docker-ce
+   state: latest
+  notify: 
+        - start docker
+  notify: 
+        - enable docker 
+
+
+
+
+

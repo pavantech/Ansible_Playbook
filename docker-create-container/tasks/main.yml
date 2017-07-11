@@ -1,0 +1,20 @@
+- name: create directory in /usr folder
+  shell: mkdir /usr/tomcat
+  ignore_errors: yes
+
+- name: copy the Dockerfile in target location
+  copy:
+    src: static_dir/Dockerfile
+    dest: /usr/tomcat/
+    mode: 0777
+
+- name: build docker file
+  shell: docker build -t  tomcat8 .
+  args:
+    chdir: /usr/tomcat/
+
+- name: run the docker container
+  shell: docker run -itd -p 8080:8080 tomcat8
+  args:
+    chdir: /usr/tomcat/
+  
