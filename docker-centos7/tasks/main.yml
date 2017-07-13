@@ -21,8 +21,7 @@
    name: docker-ce
    state: latest
   notify: 
-        - start docker
-  notify: 
+        - start docker 
         - enable docker 
 
 
