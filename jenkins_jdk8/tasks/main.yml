@@ -1,4 +1,12 @@
 ---
+- name: install wget
+  yum:
+    name: wget
+    state: latest
+- name: install git
+  yum:
+    name: git
+    state: latest
 - name: install the epel relase latest for centos7
   yum: 
    name: http://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-10.noarch.rpm 
@@ -27,14 +35,6 @@
 - name: sorce /etc/profile
   shell: source /etc/profile
 
-- name: install wget
-  yum:
-    name: wget
-    state: latest
-- name: install git
-  yum:
-    name: git
-    state: latest
 
 - name: installing jenkins process is going
   shell: wget -O /etc/yum.repos.d/jenkins.repo http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo
