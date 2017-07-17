@@ -22,8 +22,6 @@
    state: latest
 - name: docker service start
   shell: service docker start
-- name: docker service enable
-  shell: service docker enable
 - name: status docker 
   shell: service docker status
   register: status
