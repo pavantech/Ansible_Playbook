@@ -20,9 +20,17 @@
   yum:
    name: docker-ce
    state: latest
-  notify: 
-        - start docker 
-        - enable docker 
+- name: docker service start
+  shell: service docker start
+- name: docker service enable
+  shell: service docker enable
+- name: status docker 
+  shell: service docker status
+  register: status
+- debug:
+     var: status
+ 
+ 
 
 
 
